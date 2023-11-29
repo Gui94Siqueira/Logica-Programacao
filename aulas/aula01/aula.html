@@ -15,21 +15,46 @@
 
 
     <script>
-        console.log("Olá Mundo!");
+         console.log("Olá Mundo!");
     </script>
 
     <script>
-        document.write("Olá mundo!")
+        // document.write("Olá mundo!")
     </script>
 
     <script>
-        window.alert("Olá mundo!")
+        // window.alert("Olá mundo!")
     </script>
 
     <div id="textoAqui">AQUI É O INNER HTML</div>
 
     <script>
         document.getElementById("textoAqui").innerHTML = 'Olá Inner Html'
+    </script>
+
+    <!-- Inputs para javascript -->
+
+    <script>
+        var nome = prompt('Informe o seu nome:');
+
+        console.log("Nome Digitado: " + nome)
+    </script>
+
+    <script>
+        // var confirmacao = confirm("deseja continuar?");
+        // console.log("Resposta: " + confirmacao);
+    </script>
+
+
+    <input type="text" placeholder="Digite algo..." id="campoTexto">
+    <button onclick="obterTexto()">Obter Texto</button>
+
+    <script>
+        function obterTexto() {
+            var texto = document.getElementById("campoTexto").value;
+                console.log("Você digitou isso ? " + texto);
+
+        }
     </script>
 </body>
 </html>
