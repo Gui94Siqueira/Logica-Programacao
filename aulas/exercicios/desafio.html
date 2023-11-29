@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Calculadora de Média</h1>
+    <h3>Informe as médias do aluno</h3>
+    <input type="number" id="n01" placeholder="digite um numero">
+    <input type="number" id="n02" placeholder="digite um numero">
+    <input type="number" id="n03" placeholder="digite um numero">
+    <input type="number" id="n04" placeholder="digite um numero">
+    <button onclick="calcularMedia()">Exibir Média</button>
+
+    <script>
+        function calcularMedia () {
+            var n1 = parseInt(document.getElementById("n01").value);
+            var n2 = parseInt(document.getElementById("n02").value);
+            var n3 = parseInt(document.getElementById("n03").value);
+            var n4 = parseInt(document.getElementById("n04").value);
+
+            var media = (n1 + n2 + n3 + n4) / 4;
+
+            alert("A média do aluno e de: " + media);
+        }
+    </script>
+</body>
+</html>
