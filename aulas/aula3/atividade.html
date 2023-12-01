@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Calculadora de Média</h1>
+    <h3>Informe as médias do aluno</h3>
+
+    <input id="nota1" type="number" placeholder="primeira nota...">
+    <input id="nota2" type="number" placeholder="segunda nota...">
+    <input id="nota3" type="number" placeholder="terceira nota...">
+    <input id="nota4" type="number" placeholder="quarta nota...">
+
+    <button onclick="media()">Exibir Média</button>
+
+    <h1 id="status"></h1>
+
+    <script>
+        function media() {
+            const unidades = 4;
+            let status;
+
+            var nota1 = parseFloat(document.getElementById("nota1").value);
+            var nota2 = parseFloat(document.getElementById("nota2").value);
+            var nota3 = parseFloat(document.getElementById("nota3").value);
+            var nota4 = parseFloat(document.getElementById("nota4").value);
+
+            var somaNotas = nota1 + nota2 + nota3 + nota4;
+            var media = somaNotas/unidades;
+
+
+            if (media >= 7) {
+                status = "<font color=blue>Aprovado";
+                document.getElementById("status").innerHTML = status;
+            } else {
+                status = "<font color=red>Reprovado";
+                document.getElementById("status").innerHTML = status;
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
