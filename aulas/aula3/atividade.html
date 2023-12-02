@@ -19,6 +19,7 @@
     <button onclick="media()">Exibir Média</button>
 
     <h1 id="status"></h1>
+    <h2 id="resultado"></h2>
 
     <script>
         function media() {
@@ -33,15 +34,26 @@
             var somaNotas = nota1 + nota2 + nota3 + nota4;
             var media = somaNotas/unidades;
 
+            let mediaMax = 10.1
+
+            if (nota1 >= mediaMax || nota2 >= mediaMax || nota3 >= mediaMax || nota3 >= mediaMax ) {
+                alert("use apenas notas de 0 a 10");
+                return;
+            }
+
 
             if (media >= 7) {
-                status = "<font color=blue>Aprovado";
+                status = "<font color=blue>Aprovado com excelência";
+                document.getElementById("status").innerHTML = status;
+            } else if (media >=5) {
+                status = "<font color=red>Recuperação!";
                 document.getElementById("status").innerHTML = status;
             } else {
-                status = "<font color=red>Reprovado";
+                status = "<font color=red>Reprovado!";
                 document.getElementById("status").innerHTML = status;
             }
 
+            document.getElementById("resultado").innerHTML = "Média: " + media;
         }
 
     </script>
