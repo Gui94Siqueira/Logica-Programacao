@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>Desafio - Quiz de Conhecimentos Gerais</h1>
 
@@ -29,7 +31,7 @@
     <div id="resultado"></div>
 
     <br>
-   
+
 
     <script>
         function verificarRespostas() {
@@ -39,34 +41,35 @@
             //gudardar respostas em variáveis
 
             let resposta1 = document.getElementById("resposta1").value;
-            let resposta2 = document.getElementById("resposta1").value;
-            let resposta3 = document.getElementById("resposta1").value;
-            let resposta4 = document.getElementById("resposta1").value;
-            let resposta5 = document.getElementById("resposta1").value;
+            let resposta2 = document.getElementById("resposta2").value;
+            let resposta3 = document.getElementById("resposta3").value;
+            let resposta4 = document.getElementById("resposta4").value;
+            let resposta5 = document.getElementById("resposta5").value;
 
 
-            const resposta01 = "Brasilia",
-                  resposta02 = "Pacifico",
-                  resposta03 = "William",
-                  resposta04 = "Au",
-                  resposta05 = "7 de setembro";
+            let resposta01 = "Brasilia",
+                resposta02 = "Pacifico",
+                resposta03 = "William",
+                resposta04 = "Au",
+                resposta05 = "7 de setembro";
 
 
             //if (resposta correta) pontuacao++;
             if (resposta1.toLowerCase() == resposta01.toLowerCase()) {
                 pontuacao++
-            } else  if (resposta2.toLowerCase() == resposta02.toLowerCase()) {
+            } if (resposta2 == resposta02.toLowerCase()) {
                 pontuacao++
-            } else if (resposta3.toLowerCase() == resposta03.toLowerCase()) {
+            } if (resposta3.toLowerCase() == resposta03.toLowerCase()) {
                 pontuacao++
-            } else if (resposta4.toLowerCase() == resposta04.toLowerCase()) {
+            } if (resposta4.toLowerCase() == resposta04.toLowerCase()) {
                 pontuacao++
-            }else if (resposta5.toLowerCase() == resposta05.toLowerCase()) {
+            } if (resposta5.toLowerCase() == resposta05.toLowerCase()) {
                 pontuacao++
             }
-            
+
             resultadoDiv.innerHTML = "<h2>Sua pontuação: " + pontuacao + "</h2>";
         }
     </script>
 </body>
+
 </html>
