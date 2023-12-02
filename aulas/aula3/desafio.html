@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Desafio - Quiz de Conhecimentos Gerais</h1>
+
+    <form>
+        <h3>Pergunta 1: Qual é a capital do Brasil?</h3>
+        <input type="text" id="resposta1" placeholder="Sua resposta..." required>
+
+        <h3>Pergunta 2: Qual é o maior oceano do mundo?</h3>
+        <input type="text" id="resposta2" placeholder="Sua resposta..." required>
+
+        <h3>Pergunta 3: Quem escreveu 'Romeu e Julieta'?</h3>
+        <input type="text" id="resposta3" placeholder="Sua resposta..." required>
+
+        <h3>Pergunta 4: Qual o símbolo químico do ouro?</h3>
+        <input type="text" id="resposta4" placeholder="Sua resposta..." required>
+
+        <h3>Pergunta 5: Em que ano ocorreu a independencia do Brasil?</h3>
+        <input type="text" id="resposta5" placeholder="Sua resposta..." required>
+        <button type="button" onclick="verificarRespostas()">Verificar Respostas</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <br>
+   
+
+    <script>
+        function verificarRespostas() {
+            let pontuacao = 0;
+            let resultadoDiv = document.getElementById("resultado");
+
+            //gudardar respostas em variáveis
+
+            let resposta1 = document.getElementById("resposta1").value;
+            let resposta2 = document.getElementById("resposta1").value;
+            let resposta3 = document.getElementById("resposta1").value;
+            let resposta4 = document.getElementById("resposta1").value;
+            let resposta5 = document.getElementById("resposta1").value;
+
+
+            const resposta01 = "Brasilia",
+                  resposta02 = "Pacifico",
+                  resposta03 = "William",
+                  resposta04 = "Au",
+                  resposta05 = "7 de setembro";
+
+
+            //if (resposta correta) pontuacao++;
+            if (resposta1.toLowerCase() == resposta01.toLowerCase()) {
+                pontuacao++
+            } else  if (resposta2.toLowerCase() == resposta02.toLowerCase()) {
+                pontuacao++
+            } else if (resposta3.toLowerCase() == resposta03.toLowerCase()) {
+                pontuacao++
+            } else if (resposta4.toLowerCase() == resposta04.toLowerCase()) {
+                pontuacao++
+            }else if (resposta5.toLowerCase() == resposta05.toLowerCase()) {
+                pontuacao++
+            }
+            
+            resultadoDiv.innerHTML = "<h2>Sua pontuação: " + pontuacao + "</h2>";
+        }
+    </script>
+</body>
+</html>
