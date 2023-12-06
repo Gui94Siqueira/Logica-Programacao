@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let voltas = parseFloat(prompt("digite a quantidade de voltas desejada: "));
+        for (let i = 0; i <= voltas; i++) {
+            document.write("<label for=`volta`>Lista de segundos: </label>" + i + `<input type=number id="voltas${i}" required><br>`);
+        }
+        document.write(`<button onclick="saida()">Enviar</button>`)
+        
+        
+
+        function saida () {
+
+            let numeros = [];
+
+
+            // obter oos tempos das voltas
+            for (let i = 0; i <= voltas; i++) {
+                let numero = document.getElementById(`voltas${i}`).value;
+                
+                numeros.push(numero);
+                
+            }
+            let i = 0;
+            // calcular a volta mais rapida
+            while (numeros.length <= i) {
+                
+            }
+         
+            // calcular a volta mais lenta
+
+            // calcular media
+
+            console.log(numeros);
+        }
+        
+        
+    </script>
+</body>
+</html>
