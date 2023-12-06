@@ -1,46 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
+    <h1>Tempo de Voltas</h1>
+
     <script>
-        let voltas = parseFloat(prompt("digite a quantidade de voltas desejada: "));
-        for (let i = 0; i <= voltas; i++) {
-            document.write("<label for=`volta`>Lista de segundos: </label>" + i + `<input type=number id="voltas${i}" required><br>`);
+
+        let quantidadeVoltas = prompt("quantidade de voltas");
+        quantidadeVoltas = parseInt(quantidadeVoltas);
+
+        for (let i = 1; i <= quantidadeVoltas; i++) {
+            document.write(`<label for="volta${i}">Tempo de Volta ${i} (segundos): </label>`);
+            document.write(`<input type="number" id="volta${i}" name="volta${i}" required><br>`);
         }
-        document.write(`<button onclick="saida()">Enviar</button>`)
-        
-        
 
-        function saida () {
-
-            let numeros = [];
+        document.write('<button onclick="exibirResultados()">Exibir Resultados </button>');
+        function exibirResultados() {
+            let tempos = [];
 
 
-            // obter oos tempos das voltas
-            for (let i = 0; i <= voltas; i++) {
-                let numero = document.getElementById(`voltas${i}`).value;
-                
-                numeros.push(numero);
-                
+            for (let i = 1; i <= quantidadeVoltas; i++) {
+                let tempo = document.getElementById(`volta${i}`).value;
+                tempo = parseInt(tempo);
+
+                tempos.push(tempo);
+
+                // tempos.push(parseInt(document.getElementById(`volta${i}`)));
             }
-            let i = 0;
-            // calcular a volta mais rapida
-            while (numeros.length <= i) {
-                
+
+            // Calculo de volta mais rapida
+            let voltaMaisRapida = tempos[0];
+
+            for (let i = 1; i < tempos.length; i++) {
+                if (tempos[i] < voltaMaisRapida) {
+                    voltaMaisRapida = tempos[i];
+                }
             }
-         
-            // calcular a volta mais lenta
 
-            // calcular media
 
-            console.log(numeros);
+            // Calculo de volta mais lenta
+            let voltaMaisLenta = tempos[0];
+
+            for (let i = 1; i < tempos.length; i++) {
+                if (tempos[i] > voltaMaisLenta) {
+                    voltaMaisLenta = tempos[i]
+                }
+            }
+
+            let media = (voltaMaisRapida + voltaMaisLenta) / tempos.length
+            console.log(tempos);
+            console.log("volta mais lenta: " + voltaMaisLenta);
+            console.log("volta mais rapida: " + voltaMaisRapida);
+            console.log("A média das voltas é de: " + media)
+
         }
+
+
         
-        
+
+
     </script>
 </body>
+
 </html>
