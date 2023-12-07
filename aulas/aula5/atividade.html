@@ -53,11 +53,21 @@
                 }
             }
 
-            let media = (voltaMaisRapida + voltaMaisLenta) / tempos.length
+            // Calculo da media das voltas
+            let somaTempos = 0;
+
+            for(i = 0; i< tempos.length; i++) {
+                somaTempos = somaTempos + tempos[i];
+            }
+
+            let media = somaTempos / quantidadeVoltas;
+
+            alert(`volta mais rapida: ${voltaMaisRapida} segundos\n volta mais lenta: ${voltaMaisLenta} segundos \n a media é de: ${media}`)
+
             console.log(tempos);
             console.log("volta mais lenta: " + voltaMaisLenta);
             console.log("volta mais rapida: " + voltaMaisRapida);
-            console.log("A média das voltas é de: " + media)
+            console.log("A média das voltas é de: " + media);
 
         }
 
