@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        let quantidade = parseFloat(prompt("Digite a nota do primeiro bimestre:"));
+
+        for (let i = 1; i <= quantidade; i++) {
+            document.write(`<label for="nota${i}">${i}ª nota: </label><input type="number" id="nota${i}"><br>`);  
+        }
+        document.write(`<br><button onclick="media()">Calcular Média</button>`);
+        function media() {
+
+            let notas = [];
+            let soma = 0;
+
+            for (let i = 1; i <= quantidade; i++) {
+                let nota = document.getElementById(`nota${i}`).value;
+                nota = parseInt(nota);
+
+                soma = soma + nota;
+
+                notas.push(nota);
+            }
+
+            let media = soma / notas.length;
+
+            // window.alert(media);
+            alert(`A média do aluno é: ${media}`);
+        }
+    </script>
+
+    <p><a href="../../index.html">Voltar ao Índice</a></p>
+</body>
+
+</html>
