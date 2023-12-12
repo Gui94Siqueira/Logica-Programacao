@@ -18,18 +18,82 @@
 
         // alert(texto + souEducado());
 
-        function soma(a, b) {
-            return a / b;
+        // function soma(a, b) {
+        //     return a / b;
+        // }
+
+        // function divide(a, b) {
+        //     if(b != 0)
+        //         return a / b;
+        //     else
+        //         return "não é possível dividir por zero"
+        // }
+
+        // console.log(divide(10, 10));
+
+    </script>
+
+    <script>
+        // função que recebe um texto e informa o seu tamanho
+
+        // let texto = "Qualquer texto";
+        // console.log("o texto tem: ", tamanhoTexto(texto)); 
+
+        // function tamanhoTexto(textoRecebido) {
+        //     return textoRecebido.length;
+        // }
+        
+        // Função que recebe  uma lista de nomes e retorna o de maior tamanho
+
+        // let nomes = ["Guilherme", "Marcos", "Vinicios"];
+
+        // console.log(maiorNome(nomes));
+
+        // function maiorNome(nomes) {
+        //     let maiorNome = nomes[0];
+
+        //     for (let i = 1; i < nomes.length; i++) {
+
+        //         if (nomes[i].length > maiorNome.length) {
+        //             maiorNome = nomes[i];
+
+        //         }
+        //     }
+        //     return maiorNome;
+        // }
+
+        let obter = parseFloat(prompt("Digite um numero"));
+
+
+        if(ehPar(obter))
+            alert("Esse numero é par");
+        else
+            alert("Esse numero é impar");
+
+        function ehPar(numero) {
+            return numero % 2 === 0;
+            
         }
 
-        function divide(a, b) {
-            if(b != 0)
-                return a / b;
-            else
-                return "não é possível dividir por zero"
+        let numeros = [1,2,3,4,5,6,7,8,9];
+        console.log(impares(numeros))
+        // function impares(lista) {
+        //     return lista.filter(numero => numero % 2 !== 0);
+        // }
+
+        function impares (listaNumeros) {
+            let impares = [];
+
+            for (let i = 0; i < listaNumeros.length; i++) {
+                if (!ehPar(listaNumeros[i])) {
+                    impares.push(listaNumeros[i]);
+                }
+            }
+
+            return impares;
         }
 
-        console.log(divide(10, 10));
+
     </script>
 </body>
 </html>
