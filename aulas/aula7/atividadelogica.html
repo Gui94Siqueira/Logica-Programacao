@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>lista de Compras</h1>
+
+    <input type="text" id="itemInput" placeholder="Digite uma tarefa...">
+    <button onclick="adicionarItem()">Adicionar item</button>
+
+    <ul id="listaDeCompras">
+        <!-- Lista ficará aqui -->
+    </ul>
+
+    <p>Total itens: <span id="totalItens">0</span></p>
+
+    <script>
+        let itens = [];
+
+        function adicionarItem() {
+            let item = document.getElementById("itemInput").value.trim();
+
+            if (item !== "") {
+                itens.push(item);
+                itemInput.value = "";
+                atualizarLista();
+            }
+        }
+
+        function atualizarLista() {
+            let listaDeCompras = document.getElementById("listaDeCompras");
+            listaDeCompras.innerHTML = "";
+
+            for (let i = 0; i < itens.length; i++) {
+                let novaLinha = document.createElement("li");
+                novaLinha.textContent = itens[i];
+                listaDeCompras.appendChild(novaLinha);
+                totalItens();
+            }
+            
+        }
+
+        function totalItens() {
+            let totalItens = document.getElementById("totalItens");
+            totalItens.innerHTML = itens.length;
+        }
+
+        console.log(itens);
+    </script>
+</body>
+
+</html>
