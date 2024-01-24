@@ -2,12 +2,12 @@ class MaterialBibliografico {
     constructor(titulo, autor) {
         this.titulo = titulo;
         this.autor = autor;
-        this.disponivel = true;
+        this._disponivel = true;
     }
 
     realizarEmprestimo() {
-        if (this.disponivel) {
-            this.disponivel = false;
+        if (this._disponivel) {
+            this._disponivel = false;
             return true; //Emprestimo realizado com sucesso
         } else {
             return false; //Material já emprestado
@@ -15,8 +15,8 @@ class MaterialBibliografico {
     }
 
     realizarDevolucao() {
-        if(!this.disponivel) {
-            this.disponivel = true;
+        if(!this._disponivel) {
+            this._disponivel = true;
             return true; //Devolução realizada com sucesso
         } else {
             return false; //Material já devolvido previamente
