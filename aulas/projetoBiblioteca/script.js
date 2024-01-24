@@ -1,37 +1,37 @@
-class MaterialBibliografica {
+class MaterialBibliografico {
     constructor(titulo, autor) {
         this.titulo = titulo;
         this.autor = autor;
         this.disponivel = true;
     }
 
-    realizarEmpresimo() {
+    realizarEmprestimo() {
         if (this.disponivel) {
             this.disponivel = false;
-            return true; // Emprestimo realizado com sucesso
+            return true; //Emprestimo realizado com sucesso
         } else {
-            return false; // Material já emprestado
+            return false; //Material já emprestado
         }
     }
 
-    realzarDevolucao() {
+    realizarDevolucao() {
         if(!this.disponivel) {
             this.disponivel = true;
-            return true; // Livro devolvido com sucesso
+            return true; //Devolução realizada com sucesso
         } else {
-            return false; // Material já devolvido previamente
+            return false; //Material já devolvido previamente
         }
     }
 }
 
-class Livro extends MaterialBibliografica {
+class Livro extends MaterialBibliografico {
     constructor(titulo, autor, genero) {
         super(titulo, autor);
         this.genero = genero;
     }
 }
 
-class Revista extends MaterialBibliografica {
+class Revista extends MaterialBibliografico {
     constructor(titulo, autor, categoria) {
         super(titulo, autor);
         this.categoria = categoria;
@@ -39,15 +39,35 @@ class Revista extends MaterialBibliografica {
 }
 
 function realizarAcao(acao) {
-    
+    const selectLivros = document.getElementById("livros");
+    const selectedIndex = selectLivros.selectedIndex;
 
+    if(selectedIndex === 0) {
+        alert("Por favor, selecione um livro válido.");
+        return;
+    }
+
+    const livroSelecionado = livros[selectedIndex - 1];
+
+    if(acao === 'emprestimo') {
+        const emprestimoSucesso = livroSelecionado.realizarEmprestimo();
+        exibirResultado(`Emprestimo de ${livroSelecionado.titulo}: ${emprestimoSucesso? 'Sucesso' : 'Material já emprestado'}`);
+    } else if (acao === 'devolucao') {
+        const devolucaoSucesso = livroSelecionado.realizarDevolucao();
+        exibirResultado(`Devolução de ${livroSelecionado.titulo}: ${devolucaoSucesso? 'Sucesso' : 'Material já devolvido'}`);
+    }
+}
+
+function exibirResultado(mensagem) {
+    const resultadoDiv = document.getElementById("resultado");
+    resultadoDiv.innerHTML += `<p>${mensagem}</p>`
 }
 
 const livros = [
-    new Livro("o Senhor dos Aneis", "J.R.R. Tolkien", "Fantasia"),
-    new Livro("Harry Polter e a Pedra Filosofal", "J.K. Rowling", "Fantasia"),
+    new Livro("O Senhor dos Anéis", "J.R.R. Tolkien", "Fantasia"),
+    new Livro("Harry Potter e a Pedra Filosofal", "J.K. Rowling", "Fantasia"),
     new Livro("Crepúsculo", "Stephenie Meyer", "Romance"),
-    new Revista("National Geografic", "National Geographic society", "Ciência")
+    new Revista("National Geographic", "National Geographic Society", "Ciência")
 ];
 
 const selectLivros = document.getElementById("livros");
@@ -55,7 +75,7 @@ const selectLivros = document.getElementById("livros");
 for(let i = 0; i < livros.length; i++) {
     const livro = livros[i];
     const option = document.createElement("option");
-    option.value = i + 1; // Adiciona 1 paraevitar o valor 0, que repreenta a opção padrão
+    option.value = i + 1; //Adiciona 1 para evitar o valor 0, que representa a opção padrão
     option.text = livro.titulo;
-    selectLivros.add(option); 
+    selectLivros.add(option);
 }
