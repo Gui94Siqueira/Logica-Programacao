@@ -22,12 +22,20 @@ class MaterialBibliografico {
             return false; //Material já devolvido previamente
         }
     }
+
+    toString() {
+        return `${this.titulo} - ${this.autor}`
+    }
 }
 
 class Livro extends MaterialBibliografico {
     constructor(titulo, autor, genero) {
         super(titulo, autor);
         this.genero = genero;
+    }
+
+    toString() {
+        return `${super.toString()} - ${this.genero}`
     }
 }
 
@@ -79,3 +87,6 @@ for(let i = 0; i < livros.length; i++) {
     option.text = livro.titulo;
     selectLivros.add(option);
 }
+
+console.log(livros[0].toString());
+console.log(livros[3].toString());
