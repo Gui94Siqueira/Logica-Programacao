@@ -59,7 +59,7 @@ class Character {
         }
     }
 
-    recovery(hitPoints, character) {
+    recovery(hitPoints, character = this) {
         if (character.live < character.maxLive) {
             character.live += hitPoints;
             if (character.live >= character.maxLive) {
@@ -80,7 +80,7 @@ console.log(personagem1.wholesale(personagem2));
 console.log(personagem2.wholesale(personagem1));
 
 console.log(personagem2.recovery(1, personagem1));
-console.log(personagem2.recovery(5, personagem1));
+console.log(personagem2.recovery(5));
 console.log(personagem2.recovery(20, personagem1));
 
 console.log(personagem1.recovery(20, personagem2));
