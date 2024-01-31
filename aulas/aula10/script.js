@@ -22,14 +22,14 @@ Exercício:
 */
 
 class Character {
-    constructor(name, live, attack, defense, position, alive = true) {
+    constructor(name, life, attack, defense, position, alive = true) {
         this.name = name;
-        this.live = live;
+        this.life = life;
         this.attack = attack;
         this.defense = defense;
         this.position = position;
         this.alive = alive;
-        this.maxLive = live;
+        this.maxLive = life;
     }
 
     onDeath() {
@@ -39,9 +39,9 @@ class Character {
 
     damage(damage) {
         if (this.alive) {
-            this.live -= damage;
-            console.log(`${this.name} sofreu ${damage} de dano, Agora tem ${this.live} de vida`)
-            if (this.live <= 0) {
+            this.life -= damage;
+            console.log(`${this.name} sofreu ${damage} de dano, Agora tem ${this.life} de vida`)
+            if (this.life <= 0) {
                 this.vida = 0;
                 this.onDeath();
             }
@@ -60,28 +60,57 @@ class Character {
     }
 
     recovery(hitPoints, character = this) {
-        if (character.live < character.maxLive) {
-            character.live += hitPoints;
-            if (character.live >= character.maxLive) {
-                character.live = character.maxLive
-                console.log(`O personagem ${this.name} recuperou a vida de ${character.name} que alcançou quantidade de vida maxima ${character.live}`);
+        if (character.life < character.maxLive) {
+            character.life += hitPoints;
+            if (character.life >= character.maxLive) {
+                character.life = character.maxLive
+                console.log(`O personagem ${this.name} recuperou a vida de ${character.name} que alcançou quantidade de vida maxima ${character.life}`);
             }
         }
     }
 }
 
-let personagem1 = new Character("Arthur", 100, 10, 12, 1);
-let personagem2 = new Character("Gendalf", 85, 12, 8, 1);
+class Archer extends Character {
+    constructor(name, attack, defense, life, position, alive = true) {
+        super(name, attack, defense, life, position,alive)
+    }
+}
 
-console.log(personagem1);
-console.log(personagem2);
+class Warrior extends Character {
+    constructor(name, attack, defense, life, position, alive = true, shield) {
+        super (name, attack, defense, life, position, alive)
+        this.shield = shield;
+    }
+
+    damage(damage) {
+        console.log(`${this.name} sofre dano de ${damage}, mas defendeu com ${this.shield} de escudo`);
+
+        if(damage > this.shield) {
+            damage -= this.shield; 
+        } else {
+            damage = 0;
+        }
+
+        super.damage(damage);
+    }
+
+    wholesale(enemy) {
+        if(Math.abs(enemy.position - this.position) < 2) {
+            super.wholesale(enemy);
+        } else {
+            console.log(`${enemy.name} muito distante para ${this.name} atacar.`)
+        }
+    }
+}
+
+class Mage extends Character {
+    constructor(name, attack, defense, life, position, alive = true){
+        super(name, attack, defense, life, position, alive)
+    }
+}
+
+let personagem1 = new Warrior("Aragorn", 10, 12, 100, 5, true, 5);
+let personagem2 = new Mage("Gendalf", 12, 8, 85, 2);
 
 console.log(personagem1.wholesale(personagem2));
 console.log(personagem2.wholesale(personagem1));
-
-console.log(personagem2.recovery(1, personagem1));
-console.log(personagem2.recovery(5));
-console.log(personagem2.recovery(20, personagem1));
-
-console.log(personagem1.recovery(20, personagem2));
-
