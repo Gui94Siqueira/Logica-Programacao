@@ -151,6 +151,17 @@ class Mage extends Character {
     constructor(name, attack, defense, life, position, alive = true) {
         super(name, attack, defense, life, position, alive)
     }
+
+    wholesale(enemy) {
+        if (this.arrows > 0 && Math.abs(this.position - enemy.position) > 3) {
+            super.wholesale(enemy);
+            this.a;
+        } else if (!this.arrows > 0 && Math.abs(this.position - enemy.position) > 3) {
+            console.log(`${this.name} está sem flechas para atacar!`);
+        } else if (this.arrows > 0 && !Math.abs((this.position - enemy.position) > 3)) {
+            console.log(`${this.name} não pode atacar ${enemy.name} pois estão próximos ${this.position} - ${enemy.position}`)
+        }
+    }
 }
 
 let persoGuerreiro = new Warrior("Aragorn", 10, 12, 100, 5, true, 5);
@@ -167,3 +178,7 @@ console.log(persoArqueiro.wholesale(persoArqueiro2));
 
 console.log(`Total de flechas do ${persoArqueiro.name} agora é ${persoArqueiro.rechargeArrows(5)}`);
 console.log(`Total de flechas do ${persoArqueiro.name} agora é ${persoArqueiro.rechargeArrows(5)}`);
+
+console.log(persoMago.wholesale(persoArqueiro));
+console.log(persoArqueiro.wholesale(persoMago));
+console.log(persoMago.wholesale(persoArqueiro));
