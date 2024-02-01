@@ -148,17 +148,19 @@ class Warrior extends Character {
 }
 
 class Mage extends Character {
-    constructor(name, attack, defense, life, position, alive = true) {
+    constructor(name, attack, defense, life, position, alive = true, magic) {
         super(name, attack, defense, life, position, alive)
+        this.magic = life / 2;
     }
 
     wholesale(enemy) {
-        if (this.arrows > 0 && Math.abs(this.position - enemy.position) > 3) {
+
+        if (this.position < 3 && Math.abs(this.position - enemy.position) > 6) {
             super.wholesale(enemy);
-            this.a;
-        } else if (!this.arrows > 0 && Math.abs(this.position - enemy.position) > 3) {
-            console.log(`${this.name} está sem flechas para atacar!`);
-        } else if (this.arrows > 0 && !Math.abs((this.position - enemy.position) > 3)) {
+            this.magic-2;
+        } else if (!this.magic < 0 && Math.abs(this.position - enemy.position) > 6) {
+            console.log(`${this.name} está sem magia para atacar!`);
+        } else if (this.magia > 0 && !Math.abs((this.position - enemy.position) > 6)) {
             console.log(`${this.name} não pode atacar ${enemy.name} pois estão próximos ${this.position} - ${enemy.position}`)
         }
     }
