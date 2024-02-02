@@ -29,8 +29,29 @@ class Vehicle {
 
 let veiculos = [];
 
-veiculos.push(new Vehicle("fiat", "uno", 60000, "branco", 16, 90, "www.url.com"));
-veiculos.push(new Vehicle("fiat", "palio", 90000, "vermelho", 14, 90, "www.url.com"));
-veiculos.push(new Vehicle("chrevrolet", "cruze", 120000, "amarelo", 11, 90, "www.url.com"));
+function cadastrarVeiculo() {
+    // recebimento dos valores do HTML
+    const marca = document.getElementById('marca').value;
+    const modelo = document.getElementById('modelo').value;
+    const preco = parseFloat(document.getElementById('preco').value);
+    const cor = document.getElementById('cor').value;
+    const autonomia = parseInt(document.getElementById('autonomia').value);
+    const capacidadeTanque = parseInt(document.getElementById('capacidadeTanque').value);
+    const imgURL = document.getElementById('imgURL').value;
 
-console.log(veiculos);
+    // Instanciar um novo veículo
+    const veiculo = new Vehicle(marca, modelo, preco, cor, autonomia, capacidadeTanque, imgURL);
+
+    // Adicionar o veiculo a nossa lista "banco de dados"
+    veiculos.push(veiculo);
+
+    // Atualiza a exibição
+    console.log(veiculos);
+
+    // limpar formulário
+    document.getElementById('veiculoForm').reset();
+}
+
+function exibirVeiculos() {
+    const veiculosList = document.getElementById("veiculosList")
+}
