@@ -5,45 +5,89 @@ class Client {
     }
 }
 
-class account {
-    constructor(client, number, bankroll) {
+class Account {
+    constructor(client, number, balance) {
         this.client = client;
         this.number = number;
-        this.bankroll = bankroll;
+        this.balance = balance;
     }
 
     withdraw(value) {
-        return true
+        //verificar se o saldo é maior ou igual ao valor
+        //e verificar se o valor é maior que 0
+        //retornar ture em caso de sucesso, false caso não
+        if(value > 0) {
+            if(this.balance >= value) {
+                this.balance -= value;
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return alert("Indique um valor valido para saque")
+        }
     }
 
     deposit(value) {
-        return true
+        if(value > 0) {
+            this.balance += value;
+            return true;
+        }
+
+        return false;
+        
     }
 
-    transfer(transferValue, client) {
-        return true
+    transfer(transferValue, account) {
+        if(this.withdraw(transferValue)) {
+            account.deposit(transferValue);
+            return true;
+        } else {
+            alert("Transferência não realizada tente novamente");
+            return false;
+        }
     }
 }
 
-class checkingAccount extends account {
-    constructor(client, number, bankroll, specialCheque) {
-        super(client, number, bankroll)
+class CheckingAccount extends Account {
+    constructor(client, number, balence, specialCheque) {
+        super(client, number, balence)
             this.specialCheque = specialCheque;
     }
 
     withdraw(value) {
-        super(value);
+        super.withdraw(value);
         return true;
     }
 }
 
-class savingsAccount extends account {
-    constructor(client, number, bankroll, yield) {
+class SavingsAccount extends Account {
+    constructor(client, number, bankroll, income) {
         super(client, number, bankroll);
-            this.yield = yield;
+            this.income = income;
     }
 
     applyYield() {
-        
+
     }
 }
+
+let accounts = [];
+let clients = [];
+
+let clientA = new Client("Fulano", "1234567890");
+clients.push(clientA);
+let clientB = new Client("Beltrano", "0987654321");
+clients.push(clientB);
+
+let contaX = new CheckingAccount(clientA, 123, 100, 150);
+accounts.push(contaX)
+let contaY = new SavingsAccount(clientB, 123, 200, 0.01);
+accounts.push(contaY);
+let contaZ = new CheckingAccount(clientB, 235, 200, 180);
+accounts.push(contaZ);
+
+contaY.transfer(150, contaX);
+
+console.log("Conta Y: ", contaY);
+console.log("Conta X: ", contaX);
