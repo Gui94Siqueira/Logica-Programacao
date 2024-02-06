@@ -56,8 +56,13 @@ class CheckingAccount extends Account {
     }
 
     withdraw(value) {
-        super.withdraw(value);
-        return true;
+        let newBalance = this.balance + this.specialCheque;
+        if(newBalance > 0){
+            return super.withdraw(value);
+        }
+        
+
+        return false;
     }
 }
 
@@ -68,7 +73,7 @@ class SavingsAccount extends Account {
     }
 
     applyYield() {
-
+        return this.balance += this.balance * this.income;
     }
 }
 
@@ -87,7 +92,7 @@ accounts.push(contaY);
 let contaZ = new CheckingAccount(clientB, 235, 200, 180);
 accounts.push(contaZ);
 
-contaY.transfer(150, contaX);
+contaY.transfer(70, contaX);
 
 console.log("Conta Y: ", contaY);
 console.log("Conta X: ", contaX);
