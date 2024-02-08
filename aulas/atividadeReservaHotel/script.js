@@ -26,7 +26,7 @@ class HotelGuest {
 class Reserve {
     constructor(bedroom, hotelGuest, initDate, endDate, totalCost = 0) {
         this.bedroom = bedroom;
-        this.hotelGuestguest = hotelGuest;
+        this.hotelGuest = hotelGuest;
         this.initDate = initDate;
         this.endDate = endDate;
         this.totalCost = totalCost;
@@ -62,7 +62,13 @@ class Hotel {
 
     availabilityRooms() {
         // adicionar apenas os quartos disponiveis
-        console.log(this.bedrooms)
+        let available = [];
+        for (let i = 0; this.bedrooms.length > i; i++) {
+            if(!this.bedrooms[i].isReserved) {
+                available.push(this.bedrooms[i]);
+            }
+        }
+        return console.log(available)
     }
 }
 // let quartos = [];
@@ -72,6 +78,7 @@ let cliente = new HotelGuest("Guilherme", "guilherme@gmail.com");
 //reservas.push(cliente);
 
 let quarto = new Room(123, "Standart", 150, false);
+let quarto1 = new Room(123, "Suite", 150, false);
 //reservas.push(quarto);
 
 let reserva = new Reserve(quarto, cliente, 7, 10);
@@ -79,7 +86,8 @@ let reserva = new Reserve(quarto, cliente, 7, 10);
 
 let hotel = new Hotel()
 hotel.addBedroom(quarto);
+hotel.addBedroom(quarto1);
 hotel.bookRoom(hotel.bedrooms[0], cliente, "07", "10");
 
 console.log();
-console.log(hotel)
+console.log(hotel.availabilityRooms());
