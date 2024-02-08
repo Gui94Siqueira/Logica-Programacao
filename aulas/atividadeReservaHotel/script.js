@@ -45,19 +45,19 @@ class Hotel {
     }
 
     addBedroom(room) {
-       if(room == !this.reservations.number) {
-        this.reservations += room;
-       } else {
-        alert("quarto Oculpado!")
-       }
+        this.bedrooms.push(room);
+      
     }
 
     bookRoom(room, guest, initDate, endDate) {
-        if(room.isReserved == false) {
-            this.bedrooms += guest + initDate + endDate;
-        } else {
-            alert("quarto já reservado!")
+        if(!room.availability()) {
+            return alert("reservado");
+
         }
+
+        room.availability();
+        const reserva = new Reserve(room, guest, initDate, endDate);
+        this.reservations.push(reserva); 
     }
 
     availabilityRooms() {
@@ -79,6 +79,7 @@ let reserva = new Reserve(quarto, cliente, 7, 10);
 
 let hotel = new Hotel()
 hotel.addBedroom(quarto);
-// hotel.bookRoom(hotel.bedrooms[0], cliente, "2024/07/02", "2024/10/02");
+hotel.bookRoom(hotel.bedrooms[0], cliente, "07", "10");
 
-console.log(hotel.addBedroom(123));
+console.log();
+console.log(hotel)
