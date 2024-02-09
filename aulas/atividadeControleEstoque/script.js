@@ -7,8 +7,7 @@ class Produto {
 
     calcularTotal() {
         // calcula e retorna o valor total do produto multiplicando a quantidade disponível pelo preço unitário.
-        let total = 0;
-        return total += this.quanDisponivel * this.preco;
+        return this.quanDisponivel * this.preco;
     }
 }
 
@@ -68,7 +67,7 @@ class Estoque {
         // Calcula e exibe o valor total do estoque somando o valor total de cada produto.
         let total = 0;
         for(let i = 0; this.produtos.length > i; i++) {
-            total += this.produtos[i].preco;
+            total += this.produtos[i].preco * this.produtos[i].quanDisponivel;
         }
 
         return total;
@@ -96,7 +95,6 @@ console.log("R$:",meuEstoque.calcularTotalEstoque().toFixed(2));
 
 // remover um produto do estoque
 meuEstoque.removerProduto('Calsa Jeans');
-meuEstoque.removerProduto('Camiseta');
 
 
 // verificar estoque disponivel após a remoção
@@ -104,7 +102,7 @@ console.log(meuEstoque.verificaEstoqueDisponivel('Calsa Jeans'));
 
 
 // Calcular valor total do estoque
-console.log(meuEstoque.calcularTotalEstoque());
+console.log("R$:",meuEstoque.calcularTotalEstoque().toFixed(2));
 
 console.log(meuEstoque);
 
