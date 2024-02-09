@@ -33,7 +33,13 @@ class Reserve {
     }
 
     calTotalCost() {
-        let cost = Math.abs((this.initDate - this.endDate) * this.bedroom.price);
+        let initDatesec = this.initDate;
+        let initDateEmDias = Math.floor(initDatesec / (1000 * 60 * 60 * 24));
+        
+        let endDatesec = this.endDate;
+        let endDateEmDias = Math.floor(endDatesec / (1000 * 60 * 60 * 24));
+
+        let cost = (endDateEmDias - initDateEmDias) * this.bedroom.price;
         return this.totalCost += cost;
     }
 }
@@ -85,7 +91,7 @@ meuHotel.availabilityRooms();
 const hospede1 = new HotelGuest('Jonh Doe', 'jonh@exemple.com');
 
 // Reservar um quarto
-let reserva1 = new Reserve(meuHotel.bedrooms[0], hospede1, 6, 10);
+let reserva1 = new Reserve(meuHotel.bedrooms[0], hospede1, new Date("2024-02-06"), new Date("2024-02-10"));
 
 
 console.log(`Reseva realizada com sucesso! Custo Total: `, reserva1.calTotalCost());
