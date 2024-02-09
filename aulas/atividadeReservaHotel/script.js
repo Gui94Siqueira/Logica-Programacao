@@ -7,7 +7,7 @@ class Room {
     }
 
     availability() {
-        if(!this.isReserved) {
+        if (!this.isReserved) {
             this.isReserved = true;
             return true;
         }
@@ -33,7 +33,7 @@ class Reserve {
     }
 
     calTotalCost() {
-        let cost = Math.abs((this.initDate - this.endDate) * this.room.price);
+        let cost = Math.abs((this.initDate - this.endDate) * this.bedroom.price);
         return this.totalCost += cost;
     }
 }
@@ -49,21 +49,21 @@ class Hotel {
     }
 
     bookRoom(room, guest, initDate, endDate) {
-        if(!room.availability()) {
+        if (!room.availability()) {
             return alert("reservado");
 
         }
 
         room.availability();
         const reserva = new Reserve(room, guest, initDate, endDate);
-        this.reservations.push(reserva); 
+        this.reservations.push(reserva);
     }
 
     availabilityRooms() {
         // adicionar apenas os quartos disponiveis
         let available = [];
         for (let i = 0; this.bedrooms.length > i; i++) {
-            if(!this.bedrooms[i].isReserved) {
+            if (!this.bedrooms[i].isReserved) {
                 available.push(this.bedrooms[i]);
             }
         }
@@ -78,19 +78,19 @@ meuHotel.addBedroom(new Room(101, 'Standart', 100));
 meuHotel.addBedroom(new Room(102, 'Luxo', 200));
 meuHotel.addBedroom(new Room(103, 'Suíte', 300));
 
-// Exibir quartos disponiveis();
+// Exibir quartos disponiveis;
 meuHotel.availabilityRooms();
 
-// Criar intancia de hóspede
+// Criar instancia de hóspede
 const hospede1 = new HotelGuest('Jonh Doe', 'jonh@exemple.com');
 
 // Reservar um quarto
-const reserva1 = meuHotel.bookRoom(meuHotel.bedrooms[0], hospede1, 6, 10);
+let reserva1 = new Reserve(meuHotel.bedrooms[0], hospede1, 6, 10);
 
-if (reserva1) {
-    console.log(`Reserva realizada com sucesso! Custo Total: ${reserva1.calTotalCost()}`);
 
-}
+console.log(`Reseva realizada com sucesso! Custo Total: `, reserva1.calTotalCost());
+console.log(reserva1);
+
 
 // tentar reservar um quarto ocupadp
 const reserva2 = meuHotel.bookRoom(meuHotel.bedrooms[0], hospede1, 2, 6);
