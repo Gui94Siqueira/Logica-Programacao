@@ -46,7 +46,6 @@ class Hotel {
 
     addBedroom(room) {
         this.bedrooms.push(room);
-      
     }
 
     bookRoom(room, guest, initDate, endDate) {
