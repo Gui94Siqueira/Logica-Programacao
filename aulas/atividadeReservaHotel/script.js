@@ -34,7 +34,7 @@ class Reserve {
 
     calTotalCost() {
         let cost = Math.abs((this.initDate - this.endDate) * this.room.price);
-        return this.totalCost = cost;
+        return this.totalCost += cost;
     }
 }
 
@@ -70,23 +70,31 @@ class Hotel {
         return console.log(available)
     }
 }
-// let quartos = [];
-// let reservas = [];
+// Criar instancia do hotel
+const meuHotel = new Hotel();
 
-let cliente = new HotelGuest("Guilherme", "guilherme@gmail.com");
-//reservas.push(cliente);
+// Adicionar quartos ao Hotel
+meuHotel.addBedroom(new Room(101, 'Standart', 100));
+meuHotel.addBedroom(new Room(102, 'Luxo', 200));
+meuHotel.addBedroom(new Room(103, 'Suíte', 300));
 
-let quarto = new Room(123, "Standart", 150, false);
-let quarto1 = new Room(123, "Suite", 150, false);
-//reservas.push(quarto);
+// Exibir quartos disponiveis();
+meuHotel.availabilityRooms();
 
-let reserva = new Reserve(quarto, cliente, 7, 10);
-//reserva.calTotalCost()
+// Criar intancia de hóspede
+const hospede1 = new HotelGuest('Jonh Doe', 'jonh@exemple.com');
 
-let hotel = new Hotel()
-hotel.addBedroom(quarto);
-hotel.addBedroom(quarto1);
-hotel.bookRoom(hotel.bedrooms[0], cliente, "07", "10");
+// Reservar um quarto
+const reserva1 = meuHotel.bookRoom(meuHotel.bedrooms[0], hospede1, 6, 10);
 
-console.log();
-console.log(hotel.availabilityRooms());
+if (reserva1) {
+    console.log(`Reserva realizada com sucesso! Custo Total: ${reserva1.calTotalCost()}`);
+
+}
+
+// tentar reservar um quarto ocupadp
+const reserva2 = meuHotel.bookRoom(meuHotel.bedrooms[0], hospede1, 2, 6);
+
+// Exibir quartos disponiveis após a reserva
+meuHotel.availabilityRooms();
+console.log(meuHotel)
